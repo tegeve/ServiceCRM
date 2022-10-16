@@ -321,7 +321,7 @@ def update_specialize_view(request, pk):
 
 @login_required(login_url='adminlogin')
 def admin_request_view(request):
-    return render(request, 'tickets/admin_request.html')
+    return render(request, 'tickets/admin_report.html')
 
 
 @login_required(login_url='adminlogin')
@@ -331,7 +331,7 @@ def admin_view_request_view(request):
     for enq in enquiry:
         agent = models.Agent.objects.get(id=enq.agent_id)
         agenti.append(agent)
-    return render(request, 'vehicle/admin_view_request.html', {'data': zip(agenti, enquiry)})
+    return render(request, 'tickets/admin_view_request.html', {'data': zip(agenti, enquiry)})
 
 
 @login_required(login_url='adminlogin')
