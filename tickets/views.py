@@ -39,7 +39,7 @@ def adminclick_view(request):
 def agent_signup_view(request):
     userForm = forms.AgetUserForm()
     agentForm = forms.AgentForm()
-    mydict = {'userForm': userForm, 'customerForm': agentForm}
+    mydict = {'userForm': userForm, 'agentForm': agentForm}
     if request.method == 'POST':
         userForm = forms.AgetUserForm(request.POST)
         agentForm = forms.AgentForm(request.POST, request.FILES)
@@ -58,11 +58,11 @@ def agent_signup_view(request):
 
 def tehnician_signup_view(request):
     userForm = forms.TehnicianUserForm()
-    tehnicianForm = forms.MechanicForm()
+    tehnicianForm = forms.TehnicianForm()
     mydict = {'userForm': userForm, 'tehnicianForm': tehnicianForm}
     if request.method == 'POST':
         userForm = forms.TehnicianUserForm(request.POST)
-        tehnicianForm = forms.MechanicForm(request.POST, request.FILES)
+        tehnicianForm = forms.TehnicianForm(request.POST, request.FILES)
         if userForm.is_valid() and tehnicianForm.is_valid():
             user = userForm.save()
             user.set_password(user.password)
@@ -78,11 +78,11 @@ def tehnician_signup_view(request):
 
 # for checking user customer, mechanic or admin(by sumit)
 def is_agent(user):
-    return user.groups.filter(name='CUSTOMER').exists()
+    return user.groups.filter(name='AGENT').exists()
 
 
 def is_tehnician(user):
-    return user.groups.filter(name='MECHANIC').exists()
+    return user.groups.filter(name='TEHNICIAN').exists()
 
 
 def afterlogin_view(request):
@@ -110,8 +110,8 @@ def admin_dashboard_view(request):
         agent = models.Agent.objects.get(id=enq.customer_id)
         agents.append(agent)
     dict = {
-        'total_customer': models.Agent.objects.all().count(),
-        'total_mechanic': models.Tehnician.objects.all().count(),
+        'total_agent': models.Agent.objects.all().count(),
+        'total_tehnician': models.Tehnician.objects.all().count(),
         'total_request': models.Request.objects.all().count(),
         'total_feedback': models.Feedback.objects.all().count(),
         'data': zip(agents, enquiry),
