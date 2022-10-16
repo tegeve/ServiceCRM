@@ -1,0 +1,46 @@
+{% extends 'components/adminbase.html' %}
+{% block content %}
+
+	<!-- main content -->
+	<div class="wrapper">
+
+<!-- ****** table  start ********** -->
+		<div class="row">
+			<div class="col-12 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="color:red; text-align:center" >Deviz introdus de Agent
+						</h3>
+
+					</div>
+					<div class="card-content">
+						<table>
+							<thead>
+                <tr>
+                  <th>Nume agent</th>
+                  <th>Numar reper</th>
+                  <th>Data sesizare</th>
+                  <th>Problem Description</th>
+                </tr>
+							</thead>
+							<tbody>
+                {% for c,r in data %}
+                <tr>
+                  <td> {{c.get_name}}</td>
+                  <td> {{r.reper_no}}</td>
+                  <td> {{r.date}}</td>
+                  <td>{{r.problem_description}}</td>
+                </tr>
+                {% endfor %}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- ****** table start ********** -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+	<!-- end main content -->
+{% endblock content %}

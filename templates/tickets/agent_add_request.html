@@ -1,0 +1,71 @@
+{% extends 'components/agentbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+  <style media="screen">
+    input[type=text], select,input[type=number] , textarea{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+
+  </style>
+
+
+</head>
+
+
+
+<br><br><br><br><br>
+<h1 style="text-align:center;">DESCHIDE TICKET</h1>
+<div>
+  <form method="post" style="margin-left:200px;margin-right:200px;">
+      {% csrf_token %}
+    <label for="category">Categorie reper</label>
+    {% render_field enquiry.category class="form-control"  %}<br>
+
+    <label for="reper_no">Numar reper</label>
+    {% render_field enquiry.reper_no class="form-control" placeholder="Numar reper" %}
+
+    <label for="reper_name">Nume reper</label>
+    {% render_field enquiry.reper_name class="form-control" placeholder="Nume reper" %}
+
+    <label for="reper_brand">Brand reper</label>
+    {% render_field enquiry.reper_brand class="form-control" placeholder="Brand reper" %}
+
+    <label for="reper_model">Vehicle Model</label>
+    {% render_field enquiry.reper_model class="form-control" placeholder="Model reper" %}
+
+    <label for="problem_description">Descrierea problemei</label>
+    {% render_field enquiry.problem_description class="form-control" placeholder="Descrierea problemei" %}
+
+
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

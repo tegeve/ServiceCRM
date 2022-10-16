@@ -1,0 +1,2 @@
+Custumer->Agent
+Mechanic->Tehnician

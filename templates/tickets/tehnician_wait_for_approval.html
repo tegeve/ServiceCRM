@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+
+
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .jumbotron h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+  </style>
+  <body>
+    {% include "components/navbar.html" %}
+
+      <div class="jumbotron" style="margin-top: 0px;
+        margin-bottom: 0px;">
+        <h1 class="display-4">Salut {{request.user.first_name}}</h1>
+        <p class="lead">Contul tau inca nu a fost activat <br><br>Asteapta activarea din partea Team Leaderilor <br><br> Activarea se va realiza in cel mai scurt timp.</p>
+        <hr class="my-4">
+        <p>Verifica mai tarziu.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="/logout" role="button">Logout pentru moment</a>
+        </p>
+      </div>
+
+{% include "components/footer.html" %}
+  </body>
+</html>
