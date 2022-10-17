@@ -37,11 +37,11 @@ def adminclick_view(request):
 
 
 def agent_signup_view(request):
-    userForm = forms.AgetUserForm()
+    userForm = forms.AgentUserForm()
     agentForm = forms.AgentForm()
     mydict = {'userForm': userForm, 'agentForm': agentForm}
     if request.method == 'POST':
-        userForm = forms.AgetUserForm(request.POST)
+        userForm = forms.AgentUserForm(request.POST)
         agentForm = forms.AgentForm(request.POST, request.FILES)
         if userForm.is_valid() and agentForm.is_valid():
             user = userForm.save()
@@ -575,11 +575,11 @@ def agent_profile_view(request):
 def edit_agent_profile_view(request):
     agent = models.Agent.objects.get(user_id=request.user.id)
     user = models.User.objects.get(id=agent.user_id)
-    userForm = forms.AgetUserForm(instance=user)
+    userForm = forms.AgentUserForm(instance=user)
     customerForm = forms.AgentForm(request.FILES, instance=agent)
     mydict = {'userForm': userForm, 'agentForm': customerForm, 'agent': agent}
     if request.method == 'POST':
-        userForm = forms.AgetUserForm(request.POST, instance=user)
+        userForm = forms.AgentUserForm(request.POST, instance=user)
         agentForm = forms.AgentForm(request.POST, instance=agent)
         if userForm.is_valid() and agentForm.is_valid():
             user = userForm.save()

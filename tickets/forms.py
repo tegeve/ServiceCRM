@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from . import models
 
 
-class AgetUserForm(forms.ModelForm):
+class AgentUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username', 'password']
